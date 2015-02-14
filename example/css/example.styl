@@ -1,0 +1,71 @@
+// Variables
+titleColor = #555
+placeholdersColor = lightgrey
+
+
+// Parallax Gap
+.parallax-gap
+	height 300px
+	margin-bottom 3em
+	overflow hidden
+	position relative
+	width 100%
+
+	&__scroll
+		overflow hidden
+		perspective 10px
+		position relative
+		transform translateZ(0)
+
+	&__layer
+		transform translateZ(0) scale(1)
+
+		&__logo
+			height 128px
+			width 128px
+
+		// CSS for every layer
+		&_background
+			transform translateZ(-20px) scale(3)
+
+		&_browser
+			text-align center
+			width 200px
+
+	&__title
+		position absolute
+		z-index 5
+
+
+// Styles for text imitation
+.article
+	margin 3em 0
+
+	&__title 
+		color titleColor
+		font-weight normal
+		margin 0 auto .75em
+		width 800px
+
+.paragraph 
+	width 800px
+	margin 0 auto 2.5em
+
+	&__image 
+		background #fff
+		border .5em solid placeholdersColor
+		box-sizing border-box
+		box-shadow 1em 0 0 0 #fff
+		float left
+		height 8em
+		width 6em
+	
+		&_right 
+			float right
+			box-shadow -1em 0 0 0 #fff
+		
+	&__line 
+		background placeholdersColor
+		height .5em
+		margin-bottom 1em
+	

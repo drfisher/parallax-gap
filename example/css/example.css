@@ -1,0 +1,63 @@
+.parallax-gap {
+  height: 300px;
+  margin-bottom: 3em;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.parallax-gap__scroll {
+  overflow: hidden;
+  perspective: 10px;
+  position: relative;
+  transform: translateZ(0);
+}
+.parallax-gap__layer {
+  position: relative;
+  transform: translateZ(0) scale(1);
+}
+.parallax-gap__layer__logo {
+  height: 128px;
+  width: 128px;
+}
+.parallax-gap__layer_background {
+  transform: translateZ(-20px) scale(3);
+}
+.parallax-gap__layer_browser {
+  text-align: center;
+  width: 200px;
+}
+.parallax-gap__title {
+  position: absolute;
+  z-index: 5;
+}
+.article {
+  margin: 3em 0;
+}
+.article__title {
+  color: #555;
+  font-weight: normal;
+  margin: 0 auto 0.75em;
+  width: 800px;
+}
+.paragraph {
+  width: 800px;
+  margin: 0 auto 2.5em;
+}
+.paragraph__image {
+  background: #fff;
+  border: 0.5em solid #d3d3d3;
+  box-sizing: border-box;
+  box-shadow: 1em 0 0 0 #fff;
+  float: left;
+  height: 8em;
+  width: 6em;
+}
+.paragraph__image_right {
+  float: right;
+  box-shadow: -1em 0 0 0 #fff;
+}
+.paragraph__line {
+  background: #d3d3d3;
+  height: 0.5em;
+  margin-bottom: 1em;
+}

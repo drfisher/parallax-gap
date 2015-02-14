@@ -3,8 +3,177 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>Parallax example</title>
+	<link href="css/normalize.css" rel="stylesheet" />
+	<link href="css/example.css" rel="stylesheet" />
 </head>
 <body>
+
+<article class="article">
+
+	<h1 class="article__title">Scroll down</h1>
+
+	<!-- Some text -->
+	<div class="paragraph">
+		<div class="paragraph__image paragraph__image_right"></div>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+	</div>
+	<div class="paragraph">
+		<div class="paragraph__image"></div>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+	</div>
+	<div class="paragraph">
+		<div class="paragraph__image paragraph__image_right"></div>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+	</div>
+	<!-- / Some text -->
+
+	<!-- Parallax Gap -->
+	<div class="parallax-gap">
+		<div class="parallax-gap__title">All browsers supported</div>
+
+		<!-- Layers container -->
+		<div class="parallax-gap__scroll">
+
+			<!-- Google Chrome -->
+			<div class="parallax-gap__layer parallax-gap__layer_browser chrome">
+				<img class="parallax-gap__layer__logo" src="img/chrome.png" alt=""/>
+				<div class="parallax-gap__layer__title">Google Chrome</div>
+			</div>
+
+			<!-- Safari -->
+			<div class="parallax-gap__layer parallax-gap__layer_browser safari">
+				<img class="parallax-gap__layer__logo" src="img/safari.png" alt=""/>
+				<div class="parallax-gap__layer__title">Safari</div>
+			</div>
+
+			<!-- Firefox -->
+			<div class="parallax-gap__layer parallax-gap__layer_browser firefox">
+				<img class="parallax-gap__layer__logo" src="img/firefox.png" alt=""/>
+				<div class="parallax-gap__layer__title">Firefox</div>
+			</div>
+
+			<!-- Opera -->
+			<div class="parallax-gap__layer parallax-gap__layer_browser opera">
+				<img class="parallax-gap__layer__logo" src="img/opera.png" alt=""/>
+				<div class="parallax-gap__layer__title">Opera</div>
+			</div>
+
+			<!-- Internet Explorer -->
+			<div class="parallax-gap__layer parallax-gap__layer_browser ie">
+				<img class="parallax-gap__layer__logo" src="img/internet-explorer.png" alt=""/>
+				<div class="parallax-gap__layer__title">Internet Explorer</div>
+			</div>
+
+			<!-- background layer -->
+			<img class="parallax-gap__layer parallax-gap__layer_background"
+			     src="img/parallax-background.jpg"
+			     data-retina="ignore"
+			     alt=""
+					/>
+
+		</div>
+		<!-- / Layers container -->
+	</div>
+	<!-- / Parallax Gap -->
+
+	<!-- Some text -->
+	<div class="paragraph">
+		<div class="paragraph__image"></div>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+	</div>
+	<div class="paragraph">
+		<div class="paragraph__image paragraph__image_right"></div>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+	</div>
+	<div class="paragraph">
+		<div class="paragraph__image"></div>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+		<p class="paragraph__line"></p>
+	</div>
+	<!-- / Some text -->
+</article>
+
 <script src="../dist/ParallaxGap.min.js"></script>
+<script>
+	// Update images for retina
+	(function () {
+		Array.prototype.forEach.call(document.getElementsByTagName('img'), function (currentImg) {
+			if (currentImg.getAttribute('data-retina') !== 'ignore') {
+				currentImg.src = currentImg.src.replace('.', '@2x.');
+			}
+		});
+	})();
+</script>
 </body>
 </html>
