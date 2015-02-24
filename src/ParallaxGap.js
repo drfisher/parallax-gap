@@ -4,6 +4,11 @@
 (function (window) {
   'use strict';
 
+  var parallaxGapNameSpace = window.ParallaxGap;
+  var tools = parallaxGapNameSpace._tools;
+  var useParamsCache = false;
+  var paramsCache = null;
+
   /**
    * @property {string} cssSelectors.layer  All parallax layers
    * @property {string} cssSelectors.baseLayer  One or more main layers
@@ -44,80 +49,62 @@
     // TODO: add event listeners for custom and standart events
   };
 
-  /*
-   * Public interface
+  /**
+   * Inits an HTMLElement or an array or an array-like list of containers (it could be jQuery collection)
+   * @param {*} targetElements
+   * @param {object} [params] Common params for all elements
+   * @returns {*} ParallaxGap instance or list of elements
    */
-  if (!(ParallaxGap in window)) {
-    window.ParallaxGap = (function () {
-      var useParamsCache = false;
-      var paramsCache = null;
+  parallaxGapNameSpace.init = function (targetElements, params) {
+    if (targetElements.tagName) {
+      // Single element
+      return initContainer(targetElements, params);
+    } else {
+      // List of elements
+      useParamsCache = true;
+      Array.prototype.forEach.call(targetElements, function (currentContainer) {
+        initContainer(currentContainer, params);
+      });
+      useParamsCache = false;
+      paramsCache = null;
+    }
+    return targetElements;
+  };
 
-      /**
-       * Merges default options with user's params
-       * @param {object} [userParams]
-       * @param {object} [defaultParams]
-       * @return {object}
-       */
-      var mergeParams = function (userParams, defaultParams) {
-        userParams = userParams || {};
-        defaultParams = defaultParams || defaultOptions;
-        var result = {};
-        var currentValue, currentValueType;
-
-        for (var propName in defaultParams) {
-          if (defaultParams.hasOwnProperty(propName)) {
-            currentValue = userParams[propName] || defaultParams[propName];
-            currentValueType = getTypeOf(currentValue);
-            result[propName] = currentValueType === 'array' || currentValueType === 'object' ?
-              mergeParams(userParams[propName], defaultParams[propName])
-              : currentValue;
-          }
-        }
-        return result;
-      };
-
-      /**
-       * Inits one container
-       * @param {HTMLElement} container
-       * @param {object} [params]
-       */
-      var initContainer = function (container, params) {
-        if (useParamsCache && !paramsCache) {
-          paramsCache = mergeParams(params);
-        }
-        // TODO: check for containter, it mast be a HTMLElement
-        return new ParallaxGap(container, useParamsCache ? paramsCache : mergeParams(params));
-      };
-
-      return {
-        init: initContainer,
-        /**
-         * Inits an array or array-like list of containers (it could be jQuery collection)
-         * @param {*} containersList
-         * @param {object} [params] Common params for all elements
-         * @returns {*} list
-         */
-        initAll: function (containersList, params) {
-          useParamsCache = true;
-          Array.prototype.forEach.call(containersList, function (currentContainer) {
-            initContainer(currentContainer, params);
-          });
-          useParamsCache = false;
-          paramsCache = null;
-          return containersList;
-        }
-      };
-    })();
+  /**
+   * Inits one container
+   * @param {HTMLElement} container
+   * @param {object} [params]
+   */
+  function initContainer (container, params) {
+    if (useParamsCache && !paramsCache) {
+      paramsCache = mergeParams(params);
+    }
+    // TODO: check for containter, it mast be a HTMLElement
+    return new ParallaxGap(container, useParamsCache ? paramsCache : mergeParams(params));
   }
 
   /**
-   * A slightly more informative "typeof"
-   * @param {*} testedValue
-   * @returns {string}
+   * Merges default options with user's params
+   * @param {object} [userParams]
+   * @param {object} [defaultParams]
+   * @return {object}
    */
-  function getTypeOf (testedValue) {
-    return testedValue === null ? 'null'
-      : Array.isArray(testedValue) ? 'array'
-      : typeof testedValue;
+  function mergeParams (userParams, defaultParams) {
+    userParams = userParams || {};
+    defaultParams = defaultParams || defaultOptions;
+    var result = {};
+    var currentValue, currentValueType;
+
+    for (var propName in defaultParams) {
+      if (defaultParams.hasOwnProperty(propName)) {
+        currentValue = userParams[propName] || defaultParams[propName];
+        currentValueType = tools.getTypeOf(currentValue);
+        result[propName] = currentValueType === 'array' || currentValueType === 'object' ?
+          mergeParams(userParams[propName], defaultParams[propName])
+          : currentValue;
+      }
+    }
+    return result;
   }
 })(window);

@@ -28,6 +28,7 @@ module.exports = function (grunt) {
         files: {
           'dist/ParallaxGap.min.js': [
             'src/polyfills/*.js',
+            'src/tools.js',
             'src/ParallaxGap.js'
           ]
         }
