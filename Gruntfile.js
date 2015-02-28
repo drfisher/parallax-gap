@@ -36,22 +36,7 @@ module.exports = function (grunt) {
     },
 
     jshint: {
-      options: {
-        nonew: true,
-        jquery: true,
-        validthis: true,
-        curly: true,
-        unused: true,
-        noarg: true,
-        loopfunc: true,
-        forin: true,
-        noempty: true,
-        undef: true,
-        bitwise: true,
-        browser: true,
-        devel: true,
-        predef: ['module', 'require']
-      },
+      jshintrc: '.jshintrc',
       all: ['Gruntfile.js', 'src/*.js']
     },
 
